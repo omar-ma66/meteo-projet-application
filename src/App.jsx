@@ -1,23 +1,13 @@
-import React from "react";
-import Header from './Header/Header.jsx'
-import Weather from "./Weather/Weather.jsx";
+import React from 'react';
+import Header from './Header/Header.jsx';
+import Weather from './Weather/Weather.jsx';
+import './App.css'; // Import des styles CSS classiques
 
-import { useState } from "react";
-import './App.css';
-
-
-function App()
-{
-
+export default function App() {
   return (
-    <div id="root">
-      <div className="App">
-          <Header/>
-          <Weather/>
-      </div>
+    <div className="App">
+      <Header />
+      <Weather />
     </div>
-  )
-  
+  );
 }
-
-export default App;

@@ -1,47 +1,102 @@
- body {
-            background: #202629;
-        }
+/* Base & Global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        .App {
-            text-align: center;
-        }
+body {
+  background: #202629;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
 
-        .App-logo {
-            height: 100px;
-            pointer-events: none;
-        }
+.App {
+  text-align: center;
+}
 
-        .App-header {
-            background-color: #282c34;
-            min-height: 10vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: calc(10px + 2vmin);
-            color: white;
-        }
+/* Header */
+.App-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
 
-        .App-link {
-            color: #61dafb;
-        }
+.App-logo {
+  height: 100px;
+  pointer-events: none;
+}
 
-        /* Weather */
-        .weather.card {
-            margin-top:4vh;
-        }
+/* Layout Centré (Remplace la grille Materialize row/col s12 m6) */
+.weather-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+}
 
-        .weather.card .card-content {
-            background: #0b0829;
-        }
+/* Card Weather */
+.weather-card {
+  background: #0b0829;
+  margin-top: 4vh;
+  width: 100%;
+  max-width: 500px; /* Équivalent du m6 de Materialize */
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
 
-        .weather.card .card-action {
-            background: #120944;
-        }
+.card-content {
+  padding: 24px;
+}
 
-        .weather .temperature {
-            margin-left:4vh;
-            font-size:120px;
-            font-family: 'Roboto', sans-serif;
-            text-shadow: -1px 0 #61dafb, 0 1px #61dafb, 1px 0 #61dafb, 0 -1px #61dafb;
-        }
+.card-title {
+  font-size: 24px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.temperature {
+  display: block;
+  font-size: 120px;
+  margin: 10px 0;
+  text-shadow: -1px 0 #61dafb, 0 1px #61dafb, 1px 0 #61dafb, 0 -1px #61dafb;
+}
+
+.wind {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #b0bec5;
+}
+
+/* Days Navigation (Remplace card-action de Materialize) */
+.card-action {
+  background: #120944;
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.day-link {
+  color: #ffab40;
+  text-decoration: none;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.day-link.active {
+  font-weight: bold;
+}
+
+.day-link:hover {
+  color: #ffd8a6;
+}
