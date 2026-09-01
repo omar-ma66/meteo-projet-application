@@ -17,6 +17,7 @@ export default function Weather()
                                 <span className='temperature'>17°</span>
                                 <div className='wind'>Vent 3km/h (360°)</div>
                        </div>
+                       <Days/>
                     </div>
                 </div>
             </div>
