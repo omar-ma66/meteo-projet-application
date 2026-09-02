@@ -94,6 +94,7 @@ body {
 }
 
 .day-link.active {
+  color:white;
   font-weight: bold;
 }
 
