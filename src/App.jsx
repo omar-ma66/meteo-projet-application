@@ -9,6 +9,7 @@ export default function App() {
 
 const [meteoData, setMeteoData] = useState(null);
 const [loading, setLoading] = useState(true);
+const [ville,setVille] = useState('Lyon');
 
 
 
@@ -17,7 +18,7 @@ useEffect(() => {
 
     const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
     const url =
-      `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=Lyon&days=5&aqi=no&alerts=no`;
+      `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${ville}&days=5&aqi=no&alerts=no`;
    
    try{ 
     const response = await fetch(url);
@@ -35,21 +36,16 @@ useEffect(() => {
       chance_of_rain: data.forecast.forecastday[0].day.daily_chance_of_rain,
       sunrise: data.forecast.forecastday[0].astro.sunrise,
       sunset: data.forecast.forecastday[0].astro.sunset,
+      icon:data.current.condition.icon,
+      location:{
+      country:data.location.country,
+      region:data.location.region,
+      ville:data.location.name,}
     });
 
 
 
-  // console.log(
-  // `   Probabilite de pluie ${ data.current.chance_of_rain }% 
-  //  Couverture nuageuse  ${data.current.cloud }%  
-  //  Vitesse du vent ${data.current.wind_kph }km/heure  
-  //  Direction du vent ${data.current.wind_degree }° (360°) 
-  //  Temperature ressentie ${data.current.feelslike_c}° C
-  //  Humidité ${data.current.humidity} % 
-  //  Temperature ${data.current.temp_c} ° C 
-  //  Pression ${data.current.pressure_mb } millibars 
-  //  Lever du soleil ${data.forecast.forecastday[0].astro.sunrise}  
-  //  Coucher du soleil ${data.forecast.forecastday[0].astro.sunset} `);
+  console.log(data);
 
     }
     catch(error)
@@ -61,12 +57,16 @@ useEffect(() => {
     }
   }
     getWeatherData();
-},[]);
+},[ville]);
 
-
+function handleVille(even)
+{
+        setVille(even.target.value);
+}
   return (
     <div className="App">
       <Header  />
+      <label>Ville: <input type="text" value={ville} onChange={handleVille} /> </label>
       {/* je passe les donnees au composant Weather sous forme de prop  */}
       {loading ? ( <p>Chargement de la meteo ...</p>):(   <Weather data={meteoData}  /> )}
     </div>

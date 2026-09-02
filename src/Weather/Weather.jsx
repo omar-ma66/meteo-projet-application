@@ -7,9 +7,12 @@ export default function Weather({data}) {
     <div className="weather-container">
       <div className="weather-card">
         <div className="card-content">
-          <span className="card-title">Lyon</span>
+          <p><span className="card-title">{data.location.country}</span></p>
+          <p><span className="card-title">{data.location.region}</span></p>
+          <p><span className="card-title">{data.location.ville}</span></p>
           <p>
-            <img src="icons/sun.svg" alt="Soleil" />
+            <img src={data.icon} alt="Soleil" />
+            {/* <img src="icons/sun.svg" alt="Soleil" /> */}
           </p>
           <span className="temperature">{data.temp_c}</span>
           <div className="wind">{data.wind_kph} km/heure (360°)</div>
