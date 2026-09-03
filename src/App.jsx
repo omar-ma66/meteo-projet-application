@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header/Header.jsx";
-import Weather from "./Weather/Weather.jsx";
+// import Weather from "./Weather/Weather.jsx";
+import Weather from "./Test/Weather.jsx";  // je test ce code
+
 import "./App.css";
 
 export default function App() {
