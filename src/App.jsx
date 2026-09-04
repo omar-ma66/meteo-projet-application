@@ -29,6 +29,7 @@ export default function App() {
         //   setVilleActive(`${latitude},${longitude}`);
           setVilleActive(tempVille[0]);
           setVilles(tempVille);
+        
         },
         (error) => {
           console.warn("Géolocalisation non disponible ", error);
@@ -42,11 +43,41 @@ export default function App() {
     async function getWeatherData() {
       setLoading(true);
       const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+      /** villeActive = nom de la ville ou coords GPS  temperature sur 5 jours  */
       const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${villeActive}&days=5&aqi=no&alerts=no`;
 
       try {
         const response = await fetch(url);
         const data = await response.json();
+  /***************************************************************** */     
+  /*****  Debugage  de l'objet data *****/
+  /***************************************************************** */    
+    
+        console.log('*'.repeat(80));
+        console.log(data);
+        console.log('*'.repeat(80));
+        console.log('*'.repeat(80));
+        console.log("------------------ DEBUGAGE DE L'OBJET DATA APRES UN FETCH -----------------");
+        console.log('*'.repeat(80));
+        console.log( `daysList date => ${data.forecast.forecastday[0].date}`);
+        console.log( `daysList temperature du jour 1 day => ${data.forecast.forecastday[0].day.avgtemp_c}`);
+        console.log( `daysList temperature du jour 2 day => ${data.forecast.forecastday[1].day.avgtemp_c}`);
+        console.log( `daysList temperature du jour 3 day => ${data.forecast.forecastday[2].day.avgtemp_c}`);
+        console.log( `daysList temperature du jour 4 day => ${data.forecast.forecastday[3].day.avgtemp_c}`);
+        console.log( `daysList temperature du jour 5 day => ${data.forecast.forecastday[4].day.avgtemp_c}`);
+        console.log( `daysList jour 1 h/h  heure 1 => ${data.forecast.forecastday[0].hour[0].temp_c}`);;
+        console.log( `daysList jour 1 h/h  heure 2 => ${data.forecast.forecastday[0].hour[1].temp_c}`);;
+        console.log( `daysList jour 1 h/h  heure 3 => ${data.forecast.forecastday[0].hour[2].temp_c}`);;
+        console.log( `daysList du jour => ${data.forecast.forecastday[0].hour[0].is_day + 1}`);;
+        console.log('*'.repeat(80));
+
+
+  /***************************************************************** */     
+  /***** Fin de Debugage  de l'objet data *****/
+  /***************************************************************** */    
+
+  /***************************************************************** */     
+        
 
         setMeteoData({
           location: {
